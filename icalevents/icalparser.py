@@ -39,6 +39,7 @@ class Event:
         self.recurring = False
         self.location = None
         self.private = False
+        self.modified_at = None
 
     def time_left(self, time=None):
         """
@@ -176,6 +177,9 @@ def create_event(component, tz=UTC):
     if component.get('class'):
         event_class = component.get('class')
         event.private = event_class == 'PRIVATE' or event_class == 'CONFIDENTIAL'
+
+    if component.get('last-modified'):
+        event.modified_at = component.get('last-modified').dt
 
     return event
 

@@ -24,6 +24,7 @@ class ICalEventsTests(unittest.TestCase):
         evs = icalevents.events(url=None, file=ical, start=start)
 
         self.assertEqual(len(evs), 3, "three events are found")
+        self.assertEqual(evs[0].modified_at, datetime(2017, 5, 21, 12, 56, 19, tzinfo=UTC))
 
     def test_events(self):
         ical = "test/test_data/basic.ics"
