@@ -102,7 +102,7 @@ class Event:
             new_start = self.start
 
         if not uid:
-            uid = "%s_%d" % (self.uid, randint(0, 1000000))
+            uid = "%s_%s" % (self.uid, new_start.strftime('%Y-%m-%d_%H%M%S'))
 
         ne = Event()
         ne.summary = self.summary
